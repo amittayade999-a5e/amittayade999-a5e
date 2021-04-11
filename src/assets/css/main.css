@@ -369,7 +369,7 @@ html {
   background-position: center;
   background-size: cover;
   position: relative;
-  height: 500px;
+  height: 200px;
 }
 
 footer {
@@ -497,4 +497,8 @@ footer ul li a {
     float: right;
     min-width: 35px !important;
   }
+}
+
+.menuToggle {
+  display: none !important;
 }

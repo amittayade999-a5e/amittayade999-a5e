@@ -73,12 +73,12 @@ function Homepage(props) {
 
     const classes = useStyles();
     
-        
+    
         return (
 
 
         <div>
-            <Container maxWidth="sm">
+            <Container maxWidth="md">
                 <AppBar position="fixed" className="navbarTop">
                     <Toolbar className={classes.navBar}>
                         <Grid container spacing={3}>
@@ -86,10 +86,10 @@ function Homepage(props) {
                                 <img src={logo} className="logo" />
                             </Grid>
                             <Grid item xs={8}>
-                                <Button variant="contained" color="secondary" size="small" className="menuToggle" onClick={this.toggleSidenav.bind(this)}>
+                                <Button variant="contained" color="secondary" size="small" className="menuToggle">
                                     <MenuIcon/>
                                 </Button>
-                                <ul className="listInline" className={this.props.showHideSidenav}>
+                                <ul className="listInline">
                                     <li>
                                         <a href="" className="btn">
                                             Home
@@ -133,7 +133,7 @@ function Homepage(props) {
             </Container>
 
             <section className="toppartmain">
-                <Container maxWidth="sm">
+                <Container maxWidth="md">
                     <Grid container spacing={3}>
                         <Grid md={6} xs={12} item className="flexCenter">
                             <div >
@@ -160,7 +160,7 @@ function Homepage(props) {
             </section>
 
             <section className="doctorssection" id="Doctor">
-                <Container maxWidth="sm" className="gradientrelative">
+                <Container maxWidth="md" className="gradientrelative">
                 <Typography variant="h1" component="h1" className="opacitybig">Our Services</Typography>
                 <img src={redots} className="reddotspatients"/>
 
@@ -216,7 +216,7 @@ function Homepage(props) {
             </section>
 
             <section className="doctorssection" id="Patient">
-                <Container maxWidth="sm" className="gradientrelative">
+                <Container maxWidth="md" className="gradientrelative">
                 <Typography variant="h1" component="h1" className="opacitybig">Our Services</Typography>
                     
                     <Grid container spacing={3}>
@@ -274,7 +274,7 @@ function Homepage(props) {
                 <Grid container>
                     <img src={aboutreddots} className="aboutreddot"/>
                     <Grid item md={6} xs={12} className="aboutinfo">
-                        <Container maxWidth="sm">
+                        <Container maxWidth="md">
                             <Typography varient="h1" component="h1">
                                 About Us
               </Typography>
@@ -306,7 +306,7 @@ function Homepage(props) {
             </section>
 
             <section className="waitingsection">
-                <Container maxWidth="sm">
+                <Container maxWidth="md">
                     <Grid container spacing={3}>
                         <Grid item md={6} xs={12}>
                             <Typography varient="h3" component="h3">
@@ -324,7 +324,7 @@ function Homepage(props) {
             </section>
 
             <section className="testimonialssection">
-                <Container maxWidth="sm">
+                <Container maxWidth="md">
                     <img src={quoteimg} className="quoteimage" />
                     <Typography component="h1" varient="h1" className="whiteOpacitytext">
                         Testimonials
@@ -395,7 +395,7 @@ function Homepage(props) {
             </section>
 
             <section className="contactsection" id="Contact">
-                <Container maxWidth="sm">
+                <Container maxWidth="md">
                     <Paper className="contactblur">
                         <Grid container spacing={3}>
                             <Grid item md={6} xs={12}>
@@ -450,7 +450,7 @@ function Homepage(props) {
             </section>
 
             <footer>
-                <Container maxWidth="sm">
+                <Container maxWidth="md">
                     <Grid container spacing={3}>
                         <Grid item md={4} xs={12}>
                             <img src={logoFooter} />
