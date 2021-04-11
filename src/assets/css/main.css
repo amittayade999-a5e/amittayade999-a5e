@@ -455,3 +455,46 @@ footer ul li a {
   right: 0;
   top: 50%;
 }
+
+.listInline {
+  display: flex;
+}
+
+@media (max-width: 540px) {
+  .aboutinfo {
+    padding: 10px !important;
+  }
+  .aboutinfo h1 {
+    font-size: 50px !important;
+  }
+  .contactblur {
+    width: 80% !important;
+  }
+  .logo {
+    height: 50px !important;
+    position: absolute;
+    left: 5% !important;
+    top: 5px;
+  }
+  .listInline {
+    position: fixed;
+    top: 55px;
+    right: 0;
+    width: 200px;
+    display: block;
+    background: #fff;
+    bottom: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .listInline a {
+    display: block;
+    margin: 10px;
+  }
+  .menuToggle {
+    color: #fff !important;
+    padding: 5px 2px !important;
+    float: right;
+    min-width: 35px !important;
+  }
+}
