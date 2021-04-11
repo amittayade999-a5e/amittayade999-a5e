@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
 
-
 body {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   background-color: #f2f7ff;
   font-family: "Montserrat", sans-serif !important;
+  overflow-x: hidden;
 }
 
 html {
@@ -14,11 +14,12 @@ html {
 
 .toppartmain {
   background: linear-gradient(257.02deg, #f2f7ff 7.75%, #fbc8d3 96.98%);
-  padding: 100px 0px;
+  /* padding: 100px 0px; */
   /* margin-top: 30%; */
   position: relative;
   align-items: center;
   height: 100vh;
+  display: flex;
 }
 
 .fixedbottom {
@@ -27,10 +28,13 @@ html {
   left: 0;
   right: 0;
   text-align: center;
+  color: #666 !important;
+  text-decoration: none;
+  font-size: 13px;
 }
 
-.fixedbottom a {
-  color: #666 !important;
+.fixedbottom svg {
+  color: #2a73f0;
 }
 
 .toppartmain h3 {
@@ -38,6 +42,13 @@ html {
   font-weight: bold;
   margin-bottom: 20px;
   font-size: 40px;
+}
+
+.reddotspatients {
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  width: 100px !important;
 }
 
 .toppartmain h3 span {
@@ -70,7 +81,7 @@ html {
 }
 
 .doctorssection {
-  padding: 120px 0px 0px 0px;
+  padding: 70px 0px 0px 0px;
   position: relative;
 }
 
@@ -106,6 +117,7 @@ html {
   padding: 10px;
   border-radius: 10px !important;
   box-shadow: none !important;
+  position: relative;
 }
 
 .doctorssection h5 {
@@ -115,6 +127,10 @@ html {
   margin-bottom: 30px;
   margin-top: 10px;
   text-align: center;
+}
+
+#Doctor {
+  padding-top: 120px !important;
 }
 
 .doctorssection img {
@@ -154,10 +170,13 @@ html {
   border-bottom: 2px solid #fff;
   color: #fff;
   margin: 20px 0px;
-  width: 100px;
   padding: 10px 0px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
+}
+
+.aboutussection {
+  position: relative;
 }
 
 .aboutImage {
@@ -207,6 +226,30 @@ html {
   font-weight: bold;
 }
 
+.opacitybig {
+  position: absolute;
+  top: 5%;
+  right: 0%;
+  font-size: 75px;
+  /* text-transform: uppercase; */
+  color: #fff;
+  opacity: 0.4;
+  font-weight: bold;
+}
+
+#Patient .opacitybig {
+  left: 0;
+  right: auto;
+}
+
+.aboutreddot {
+  position: absolute;
+  width: 150px !important;
+  object-fit: contain;
+  top: 60%;
+  left: 45%;
+}
+
 .spacingWhite {
   background-color: #fff;
   padding: 20px;
@@ -217,6 +260,18 @@ html {
   border-radius: 20px;
   margin-bottom: 40px;
   box-shadow: 0px 10px 20px rgba(41, 41, 42, 0.07);
+}
+
+.flexCenter {
+  display: flex;
+  align-items: center;
+}
+
+.quoteimage {
+  position: absolute;
+  left: 10%;
+  top: 30%;
+  width: 100px;
 }
 
 .spacingWhite p {

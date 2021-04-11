@@ -38,6 +38,9 @@ import doctorThumbnailone from "../../assets/img/fordoctor/1.png";
 import doctorThumbnailtwo from "../../assets/img/fordoctor/2.png";
 import doctorThumbnailthree from "../../assets/img/fordoctor/3.png";
 import doctorThumbnailfour from "../../assets/img/fordoctor/4.png";
+import redots from '../../assets/img/reddots.png';
+import aboutreddots from '../../assets/img/reddotsaboutus.png';
+import quoteimg from '../../assets/img/quote.png'
 
 import patientBigimage from "../../assets/img/forpatient/illustration.png";
 import patientThumbnailone from "../../assets/img/forpatient/1.png";
@@ -125,15 +128,17 @@ function Homepage(props) {
             <section className="toppartmain">
                 <Container maxWidth="md">
                     <Grid container spacing={3}>
-                        <Grid xs={6} item>
+                        <Grid md={6} xs={12} item className="flexCenter">
+                            <div >
                             <Typography variant="h3" component="h3">
                                 All Your <span>Health</span> Needs <span>At Once</span>
                             </Typography>
                             <Button variant="contained" color="secondary">
                                 Get More
-              </Button>
+                            </Button>
+                            </div>
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item md={6} xs={12}>
                             <img src={sliderImage} className="headerSlider" />
                         </Grid>
                     </Grid>
@@ -149,15 +154,18 @@ function Homepage(props) {
 
             <section className="doctorssection" id="Doctor">
                 <Container maxWidth="md" className="gradientrelative">
+                <Typography variant="h1" component="h1" className="opacitybig">Our Services</Typography>
+                <img src={redots} className="reddotspatients"/>
+
                     <Grid container spacing={3}>
                         <Grid item xs={12} className="middleAbsolute">
                             <Typography variant="h3" component="h3" className="headerInfo">
                                 For Doctor
-              </Typography>
+                            </Typography>
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item md={6} xs={12}>
                             <Grid container spacing={3}>
-                                <Grid item xs={6}>
+                                <Grid item md={6} xs={12}>
                                     <Paper className="paperStyling">
                                         <img src={doctorThumbnailone} className="spaceimages"></img>
                                     </Paper>
@@ -173,7 +181,7 @@ function Homepage(props) {
                   </Typography>
                                 </Grid>
 
-                                <Grid item xs={6} className="extraSpace">
+                                <Grid item md={6} xs={12} className="extraSpace">
                                     <Paper className="paperStyling">
                                         <img src={doctorThumbnailtwo} className="spaceimages" />
                                     </Paper>
@@ -190,7 +198,7 @@ function Homepage(props) {
                                 </Grid>
                             </Grid>
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item md={6} xs={12}>
                             <img src={doctorBigimage} />
                             <Button variant="contained" color="secondary">
                                 Know More <ArrowRightAltIcon></ArrowRightAltIcon>
@@ -202,21 +210,23 @@ function Homepage(props) {
 
             <section className="doctorssection" id="Patient">
                 <Container maxWidth="md" className="gradientrelative">
+                <Typography variant="h1" component="h1" className="opacitybig">Our Services</Typography>
+                    
                     <Grid container spacing={3}>
                         <Grid item xs={12} className="middleAbsolute">
                             <Typography variant="h3" component="h3" className="headerInfo">
                                 For Patients
               </Typography>
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item md={6} xs={12}>
                             <img src={patientBigimage} />
                             <Button variant="contained" color="secondary">
                                 Know More <ArrowRightAltIcon></ArrowRightAltIcon>
                             </Button>
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item md={6} xs={12}>
                             <Grid container spacing={3}>
-                                <Grid item xs={6}>
+                                <Grid item md={6} xs={12}>
                                     <Paper className="paperStyling">
                                         <img src={patientThumbnailone} className="spaceimages" />
                                     </Paper>
@@ -232,7 +242,7 @@ function Homepage(props) {
                   </Typography>
                                 </Grid>
 
-                                <Grid item xs={6} className="extraSpace">
+                                <Grid item md={6} xs={12} className="extraSpace">
                                     <Paper className="paperStyling">
                                         <img src={patientThumbnailthree} className="spaceimages" />
                                     </Paper>
@@ -255,7 +265,8 @@ function Homepage(props) {
 
             <section className="aboutussection" id="About">
                 <Grid container>
-                    <Grid item xs={6} className="aboutinfo">
+                    <img src={aboutreddots} className="aboutreddot"/>
+                    <Grid item md={6} xs={12} className="aboutinfo">
                         <Container maxWidth="md">
                             <Typography varient="h1" component="h1">
                                 About Us
@@ -281,7 +292,7 @@ function Homepage(props) {
                         </Container>
                         <img src={aboutImagetwo} className="aboutsmallimage" />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item md={6} xs={12}>
                         <img src={aboutImage} className="aboutImage" />
                     </Grid>
                 </Grid>
@@ -290,7 +301,7 @@ function Homepage(props) {
             <section className="waitingsection">
                 <Container maxWidth="md">
                     <Grid container spacing={3}>
-                        <Grid item xs={6}>
+                        <Grid item md={6} xs={12}>
                             <Typography varient="h3" component="h3">
                                 No More Waiting For Your Health
               </Typography>
@@ -298,7 +309,7 @@ function Homepage(props) {
                                 Get Started
               </Button>
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item md={6} xs={12}>
                             <img src={waitingImage} />
                         </Grid>
                     </Grid>
@@ -307,12 +318,13 @@ function Homepage(props) {
 
             <section className="testimonialssection">
                 <Container maxWidth="md">
+                    <img src={quoteimg} className="quoteimage" />
                     <Typography component="h1" varient="h1" className="whiteOpacitytext">
                         Testimonials
           </Typography>
                     <img src="" />
                     <Grid container spacing={3}>
-                        <Grid item xs={6}>
+                        <Grid item md={6} xs={12}>
                             <Paper className="spacingWhite">
                                 <Typography varient="h6" component="h6">
                                     Incredible Experience
@@ -342,7 +354,7 @@ function Homepage(props) {
                             </Grid>
                         </Grid>
 
-                        <Grid item xs={6}>
+                        <Grid item md={6} xs={12}>
                             <Paper className="spacingWhite">
                                 <Typography varient="h6" component="h6">
                                     Incredible Experience
@@ -379,7 +391,7 @@ function Homepage(props) {
                 <Container maxWidth="md">
                     <Paper className="contactblur">
                         <Grid container spacing={3}>
-                            <Grid item xs={6}>
+                            <Grid item md={6} xs={12}>
                                 <Typography varient="h3" component="h3">
                                     Contact Us
                 </Typography>
@@ -409,7 +421,7 @@ function Homepage(props) {
                                     Submit
                 </Button>
                             </Grid>
-                            <Grid item xs={6} className="leftLine">
+                            <Grid item md={6} xs={12} className="leftLine">
                                 <Typography varient="h4" component="h4">
                                     <RoomOutlinedIcon></RoomOutlinedIcon> Address
                 </Typography>
@@ -529,7 +541,7 @@ function Homepage(props) {
                             <center>
                                 <Typography varient="p" component="p">
                                     At Once 4 Health,All Rights Reserve
-                </Typography>
+                                </Typography>
                             </center>
                         </Grid>
                     </Grid>
