@@ -73,6 +73,10 @@ function Drugs() {
   const classes = useStyles();
 
   return (
+
+    // Not Reviewed  - default
+    // Reviewed
+    // On Hold
     <div className={classes.root}>
       <Grid container spacing={3} j>
         <Grid item md={8} xs={12}>
@@ -112,7 +116,7 @@ function Drugs() {
                 <TableRow>
                   <TableCell component="th">ID</TableCell>
                   <TableCell component="th">Current Entry</TableCell>
-                  <TableCell component="th">Action</TableCell>
+                  <TableCell component="th">Status</TableCell>
                   <TableCell component="th">Corrected Entry</TableCell>
                   <TableCell component="th">Temporary</TableCell>
                   <TableCell component="th"></TableCell>
@@ -133,7 +137,7 @@ function Drugs() {
                         className={classes.formControl}
                       >
                         <Select>
-                          <MenuItem value="NotAvaliable">
+                          <MenuItem value="NotAvaliable" size="small">
                             Not Avaliable
                           </MenuItem>
                           <MenuItem value="Admin">Reviewed</MenuItem>
@@ -153,6 +157,7 @@ function Drugs() {
                     <TableCell>
                       <FormControl
                         variant="outlined"
+                        size="small"
                         className={classes.formControl}
                       >
                         <Select>
@@ -162,7 +167,7 @@ function Drugs() {
                       </FormControl>
                     </TableCell>
                     <TableCell>
-                      <Button variant="contained">Save</Button>
+                      <Button variant="contained" >Save</Button>
                     </TableCell>
                   </TableRow>
                 ))}
