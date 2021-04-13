@@ -10,6 +10,10 @@ import {
     Toolbar,
     Typography,
 } from "@material-ui/core";
+import emailjs from 'emailjs-com';
+import{ init } from 'emailjs-com';
+
+
 import {
     BrowserRouter as Router,
     Switch,
@@ -61,7 +65,16 @@ import Footer from './common/Footer';
 function Homepage(props) {
 
    
-
+    function sendEmail(e) {
+        e.preventDefault();
+    
+        emailjs.sendForm('service_jlsqboj', 'template_lmop3e5', e.target, 'user_aNf3TpSn1i7EodrhsbKk0')
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+      }
  
     
     
@@ -335,7 +348,7 @@ function Homepage(props) {
                                 <Typography varient="h3" component="h3">
                                     Contact Us
                 </Typography>
-
+                <form className="contact-form" onSubmit={sendEmail}>
                                 <TextField
                                     id="outlined-search"
                                     label="Enter Your EmailID"
@@ -343,6 +356,7 @@ function Homepage(props) {
                                     variant="outlined"
                                     fullWidth
                                     className="formControls"
+                                    Name="from_name"
                                 />
 
                                 <TextField
@@ -355,11 +369,13 @@ function Homepage(props) {
                                     label="Enter Your Message"
                                     type="text"
                                     variant="outlined"
+                                    name="message"
                                 />
 
-                                <Button variant="contained" color="secondary">
+                                <Button variant="contained" color="secondary" type="submit">
                                     Submit
                 </Button>
+                </form>
                             </Grid>
                             <Grid item md={6} xs={12} className="leftLine">
                                 <Typography varient="h4" component="h4">
