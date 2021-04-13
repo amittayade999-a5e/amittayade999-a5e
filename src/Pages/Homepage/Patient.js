@@ -23,7 +23,7 @@ import MouseIcon from "@material-ui/icons/Mouse";
 import "../../assets/css/main.css";
 
 
-import sliderImage from "../../assets/img/banner/Banner-1.png";
+import sliderImage from "../../assets/img/forpatient/Banners.png";
 
 import doctorimageone from "../../assets/img/fordoctor/schedule3.png"
 import doctorimagetwo from "../../assets/img/fordoctor/schedule1.png"
@@ -77,7 +77,7 @@ function Patient(props) {
                         <Grid md={6} xs={12} item className="flexCenter">
                             <div >
                             <Typography variant="h3" component="h3">
-                                All Your <span>Health</span> Needs <span>At Once</span>
+                                All Your <span>CONSULTATION</span> Needs <span>At Once</span>
                             </Typography>
                             <Button variant="contained" color="secondary">
                                 Get More
@@ -138,15 +138,7 @@ function Patient(props) {
                 </Container>
             </section>
 
-            <section>
-                <Container maxWidth="md">
-                    <Grid container spaceing={3}>
-                        <Grid item sm={6} xs={12}>
-                            
-                        </Grid>
-                    </Grid>
-                </Container>
-            </section>
+            
 
             <section className="doctorssection" id="Doctorsections">
                 <Container maxWidth="md" className="gradientrelative">
@@ -155,7 +147,7 @@ function Patient(props) {
                         
                         <Grid item md={6} xs={12}>
                         <Typography variant="h4" component="h4">
-                            Appointment Scheduling & Front Desk Management
+                            Book Appointment 
                             </Typography>
                             
                         </Grid>
@@ -168,7 +160,7 @@ function Patient(props) {
                                         <img src={doctorimageone} className="spaceimages" />
                                     </Paper>
                                     <Typography variant="h5" component="h5">
-                                    Schedule and cancel appointments for in-person and tele-consultation in a click.
+                                    Schedule and cancel appointments with specialist you want to visit.
 
                                     </Typography>
                                 </Grid>
@@ -178,17 +170,11 @@ function Patient(props) {
                                         <img src={doctorimagetwo} className="spaceimages" />
                                     </Paper>
                                     <Typography variant="h5" component="h5">
-                                    Manage front desk for multiple clinics/hospitals.
+                                    Book appoitment for both in patient and tele consultation
 
                                     </Typography>
 
-                                    <Paper className="paperStyling">
-                                        <img src={doctorimagethree} className="spaceimages" />
-                                    </Paper>
-                                    <Typography variant="h5" component="h5">
-                                    Multiuser front desk with customizable access capabilities. 
-
-                                    </Typography>
+                                   
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -209,15 +195,7 @@ function Patient(props) {
 
                                     </Typography>
 
-                                    <Paper className="paperStyling">
-                                        <img src={doctormedicalthree} className="spaceimages" />
-                                    </Paper>
-                                    <Typography variant="h5" component="h5">
-                                    Intelligently built EMR system to
- adapt your practice.
-
-
-                                    </Typography>
+                                    
                                 </Grid>
                                 <Grid item md={6} xs={12}>
                                    
@@ -226,10 +204,7 @@ function Patient(props) {
                                         <img src={doctormedicalone} className="spaceimages" />
                                     </Paper>
                                     <Typography variant="h5" component="h5">
-                                    Customizable template based 
-multilingual EMR.
-
-
+                                    No more medical file maintenance required.
                                     </Typography>
                                 </Grid>
 
@@ -238,7 +213,7 @@ multilingual EMR.
 
                         <Grid item md={6} xs={12}>
                         <Typography variant="h4" component="h4">
-                        Electronic Medical Record
+                        Medical Record
                             </Typography>
                             
                         </Grid>
@@ -262,8 +237,7 @@ multilingual EMR.
                                         <img src={doctorteleone} className="spaceimages" />
                                     </Paper>
                                     <Typography variant="h5" component="h5">
-                                    Give EMR simultaneously while
- consulting the patient.
+                                    No app required to get started.
 
 
                                     </Typography>
@@ -274,72 +248,13 @@ multilingual EMR.
                                         <img src={doctorteletwo} className="spaceimages" />
                                     </Paper>
                                     <Typography variant="h5" component="h5">
-                                    Consult patients using our
- best-in-class tele-consultation
- platform.
-
-
+                                    Use our best-in-class tele-consultation platform to connect with doctors staying far away.
                                     </Typography>
 
-                                    <Paper className="paperStyling">
-                                        <img src={doctortelethree} className="spaceimages" />
-                                    </Paper>
-                                    <Typography variant="h5" component="h5">
-                                    No app required to get started.
-
-
-                                    </Typography>
                                 </Grid>
                             </Grid>
                         </Grid>
                     </Grid>
-
-                    <Grid container spacing={3}>
-                        
-                       
-                        <Grid item md={6} xs={12}>
-                        <Grid container spacing={3} className="alignCenteritems">
-
-                                <Grid item md={6} xs={12} >
-                                    <Paper className="paperStyling">
-                                        <img src={doctorpatienttwo} className="spaceimages" />
-                                    </Paper>
-                                    <Typography variant="h5" component="h5">
-                                    Manage front desk for multiple clinics/hospitals.
-
-                                    </Typography>
-
-                                    <Paper className="paperStyling">
-                                        <img src={doctorpatientone} className="spaceimages" />
-                                    </Paper>
-                                    <Typography variant="h5" component="h5">
-                                    Multiuser front desk with customizable access capabilities. 
-
-                                    </Typography>
-                                </Grid>
-                                <Grid item md={6} xs={12}>
-                                   
-
-                                    <Paper className="paperStyling">
-                                        <img src={doctorpatientthree} className="spaceimages" />
-                                    </Paper>
-                                    <Typography variant="h5" component="h5">
-                                    Schedule and cancel appointments for in-person and tele-consultation in a click.
-
-                                    </Typography>
-                                </Grid>
-                            </Grid>
-                        </Grid>
-
-                        <Grid item md={6} xs={12}>
-                        <Typography variant="h4" component="h4">
-                        Patient Management
-                            </Typography>
-                            
-                        </Grid>
-
-                    </Grid>
-
 
                 </Container>
             </section>

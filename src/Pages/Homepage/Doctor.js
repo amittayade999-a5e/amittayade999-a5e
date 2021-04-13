@@ -23,7 +23,7 @@ import MouseIcon from "@material-ui/icons/Mouse";
 import "../../assets/css/main.css";
 
 
-import sliderImage from "../../assets/img/banner/Banner-1.png";
+import sliderImage from "../../assets/img/fordoctor/Group.png";
 
 import doctorimageone from "../../assets/img/fordoctor/schedule3.png"
 import doctorimagetwo from "../../assets/img/fordoctor/schedule1.png"
@@ -77,7 +77,7 @@ function Doctor(props) {
                         <Grid md={6} xs={12} item className="flexCenter">
                             <div >
                             <Typography variant="h3" component="h3">
-                                All Your <span>Health</span> Needs <span>At Once</span>
+                                All Your <span>CONSULTATION</span> Needs <span>At Once</span>
                             </Typography>
                             <Button variant="contained" color="secondary">
                                 Get More
@@ -138,15 +138,7 @@ function Doctor(props) {
                 </Container>
             </section>
 
-            <section>
-                <Container maxWidth="md">
-                    <Grid container spaceing={3}>
-                        <Grid item sm={6} xs={12}>
-                            
-                        </Grid>
-                    </Grid>
-                </Container>
-            </section>
+            
 
             <section className="doctorssection" id="Doctorsections">
                 <Container maxWidth="md" className="gradientrelative">

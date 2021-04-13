@@ -148,7 +148,7 @@ function Homepage(props) {
                         </Grid>
                         <Grid item md={6} xs={12}>
                             <img src={doctorBigimage} />
-                            <Button variant="contained" color="secondary">
+                            <Button variant="contained" color="secondary" component={Link} to="/Doctor">
                                 Know More <ArrowRightAltIcon></ArrowRightAltIcon>
                             </Button>
                         </Grid>
@@ -168,7 +168,7 @@ function Homepage(props) {
                         </Grid>
                         <Grid item md={6} xs={12}>
                             <img src={patientBigimage} />
-                            <Button variant="contained" color="secondary">
+                            <Button variant="contained" color="secondary" component={Link} to="/Patient">
                                 Know More <ArrowRightAltIcon></ArrowRightAltIcon>
                             </Button>
                         </Grid>

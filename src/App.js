@@ -11,6 +11,7 @@ import { MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles'
 import Login from "./Pages/Common/Login";
 import Homepage from './Pages/Homepage/Homepage';
 import Doctor from './Pages/Homepage/Doctor';
+import Patient from './Pages/Homepage/Patient';
 
 function App() {
 
@@ -173,6 +174,9 @@ function App() {
                 </Route>
                 <Route exact path="/Doctor">
                   <Doctor/>
+                </Route>
+                <Route exact path="/Patient">
+                  <Patient/>
                 </Route>
                 <Route path="/Login">
                   <Login />
