@@ -48,6 +48,11 @@ function Header(props) {
     const classes = useStyles();
     return (
         <div>
+
+            <a href="#Contact" className="fixedSidebar">
+                Get Started
+            </a>
+
             <AppBar position="fixed" className="navbarTop">
                     <Toolbar className={classes.navBar}>
                         <Grid container spacing={3}>

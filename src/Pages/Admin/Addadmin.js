@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
     Grid,
     Paper,
@@ -68,10 +68,12 @@ export default function Addadmin(props) {
     };
 
     const classes = useStyles();
+    const [context] = useContext(Context);
+
 
     //state logic start
     const initialState = {
-        assistantId: -1,
+        adminID: -1,
         isEditDisabled: true,
         showPassword: false,
         errorMessage: "",
@@ -126,7 +128,46 @@ export default function Addadmin(props) {
         setState(fieldValues);
     };
 
-    const handleSubmit = (idx, e, assistantId) => {
+    //fetch initail data
+  useEffect(() => {
+      axios
+        .get(`${domainAddress}/admin/users?roles`)
+        .then((res) => res.data)
+        .then((data) => {
+          const dataArray = [];
+          data &&
+            data.forEach((obj) => {
+              const splittedName = obj.name.split(" ");
+              const fetchDOB = obj.dob ? obj.dob.split("-") : null;
+              dataArray.push({
+                adminID: obj.id,
+                isEditDisabled: false,
+                showPassword: false,
+                errorMessage: "",
+                firstName: splittedName[0],
+                middleName: splittedName[1] ? splittedName[1] : "",
+                lastName: splittedName[2] ? splittedName[2] : "",
+                dob: obj.dob
+                  ? new Date(fetchDOB[2], fetchDOB[1] - 1, fetchDOB[0])
+                  : null,
+                number: obj.number,
+                roleId: obj.role,
+                emailId: obj.emailId,
+                password: obj.password,
+                functionality: obj.functionalityMasterDTO.map((elem) =>
+                  JSON.stringify(elem)
+                ),
+              });
+            });
+          setState(dataArray);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+  }, []);
+
+
+    const handleSubmit = (idx, e, adminID) => {
         e.preventDefault();
         const requestBody = {
            
@@ -146,7 +187,7 @@ export default function Addadmin(props) {
             middleName :state[idx].middleName,
             lastName : state[idx].lastName,
             number: state[idx].number,
-            ...(assistantId === -1 && { password: state[idx].password }),
+            ...(adminID === -1 && { password: state[idx].password }),
         };
         axios
           .post(
@@ -172,10 +213,12 @@ export default function Addadmin(props) {
           });
     };
 
+
+
     //handling assistant delete
-    const handleDeleteAssistant = (e, i, assistantId) => {
+    const handleDeleteAssistant = (e, i, adminID) => {
         e.preventDefault();
-        if (assistantId === -1) {
+        if (adminID === -1) {
             const fieldValues = [...state];
             fieldValues.splice(i, 1);
             setState(fieldValues);
@@ -183,7 +226,7 @@ export default function Addadmin(props) {
             //hit api and delete
             //   axios
             //     .delete(
-            //       `${domainAddress}/clinic-detail/assistant/delete?assistant-id=${assistantId}&doctor-id=${context.doctorId}`
+            //       `${domainAddress}/user/register/delete?assistant-id=${adminID}&doctor-id=${context.doctorId}`
             //     )
             //     .then((res) => {
             //       const fieldValues = [...state];
@@ -215,7 +258,7 @@ export default function Addadmin(props) {
                 {state.map((fieldValues, idx) => (
                     <Paper className={classes.paper} key={idx}>
                         <form
-                            onSubmit={(e) => handleSubmit(idx, e, fieldValues.assistantId)}
+                            onSubmit={(e) => handleSubmit(idx, e, fieldValues.adminID)}
                         >
                             <Grid container spacing={3}>
                                 <Grid item xs={6}>
@@ -238,7 +281,7 @@ export default function Addadmin(props) {
                                         variant="contained"
                                         color="secondary"
                                         onClick={(e) =>
-                                            handleDeleteAssistant(e, idx, fieldValues.assistantId)
+                                            handleDeleteAssistant(e, idx, fieldValues.adminID)
                                         }
                                     >
                                         <DeleteIcon></DeleteIcon> Delete

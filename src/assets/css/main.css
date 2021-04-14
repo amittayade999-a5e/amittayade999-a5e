@@ -594,3 +594,17 @@ footer ul li a {
 .menuToggle {
   display: none !important;
 }
+
+.fixedSidebar {
+  position: fixed;
+  top: 50%;
+  right: -50px;
+  transform: rotate(90deg);
+  background-color: #f50057;
+  color: #fff !important;
+  font-size: 15px;
+  z-index: 99999;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+}
