@@ -12,6 +12,7 @@ import Login from "./Pages/Common/Login";
 import Homepage from './Pages/Homepage/Homepage';
 import Doctor from './Pages/Homepage/Doctor';
 import Patient from './Pages/Homepage/Patient';
+import OTPVerification from './Pages/Common/OTPVerification';
 
 function App() {
 
@@ -30,17 +31,17 @@ function App() {
     }
   );
 
-  axios.interceptors.response.use((response) => {
-    return response;
-  }, (error) => {
-    if(error.response.status === 401 || error.response.data.message === '401 Unauthorized'){
-      document.cookie = `atkn=; path=/; priority=high; max-age=${0}`;
-      // localStorage.removeItem("userNumber");
-      // localStorage.removeItem("userEmail");
-      window.location = "/login";
-    }
-    return Promise.reject(error);
-  });
+  // axios.interceptors.response.use((response) => {
+  //   return response;
+  // }, (error) => {
+  //   if(error.response.status === 401 || error.response.data.message === '401 Unauthorized'){
+  //     document.cookie = `atkn=; path=/; priority=high; max-age=${0}`;
+  //     // localStorage.removeItem("userNumber");
+  //     // localStorage.removeItem("userEmail");
+  //     window.location = "/login";
+  //   }
+  //   return Promise.reject(error);
+  // });
 
 /* useEffect(() =>{
   const token=document.cookie.split("; ").find(pair => pair.startsWith("atkn=")).substring(5)
@@ -126,10 +127,7 @@ function App() {
           number: res.data.number,
           roleId: res.data.role.roleId,
           verified: res.data.verified,
-          clinicDetail: res.data.clinicDetailDTO,
-          functionalityMaster: res.data.functionalityMasterDTO,
-          sortedClinicId: res.data.role.roleId===3 ? res.data.clinicDetailDTO.map(obj => obj.id) : null,
-          sortedFunctionalityId: res.data.role.roleId===3 ? sortFunctionalityMaster(res.data.functionalityMasterDTO): null,
+         
           });
       } else{
         throw new Error("Some error occured");
@@ -140,16 +138,7 @@ function App() {
     })
   }, []);
 
-  //Extract functionality ids
-  const sortFunctionalityMaster = (data) => {
-    const functionalityObject = { emrIds: [], ids: [] };
-    data.forEach((obj) => {
-      obj.emrFieldMaster
-        ? functionalityObject.emrIds.push(obj.emrFieldMaster.id)
-        : functionalityObject.ids.push(obj.id);
-    });
-    return functionalityObject;
-  };
+ 
 
 
   const theme = createMuiTheme({
@@ -167,10 +156,14 @@ function App() {
     <div>
         <MuiThemeProvider theme={theme}>
             <CssBaseline />
+            <Context.Provider value={[context,setContext]}>
             <Router>
               <Switch>
                 <Route exact path="/">
                   <Homepage />
+                </Route>
+                <Route exact path="/otpVerification">
+                    <OTPVerification/>
                 </Route>
                 <Route exact path="/Doctor">
                   <Doctor/>
@@ -186,6 +179,7 @@ function App() {
                 </Route>
               </Switch>
             </Router>
+            </Context.Provider>
       </MuiThemeProvider>
     </div>
   );

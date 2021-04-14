@@ -10,8 +10,7 @@ import {
     Toolbar,
     Typography,
 } from "@material-ui/core";
-import emailjs from 'emailjs-com';
-import{ init } from 'emailjs-com';
+
 
 
 import {
@@ -61,6 +60,9 @@ import waitingImage from "../../assets/img/waiting.png";
 import Header from './common/Header';
 import Footer from './common/Footer';
 
+import emailjs from 'emailjs-com';
+import{ init } from 'emailjs-com';
+
 
 function Homepage(props) {
 
@@ -94,8 +96,8 @@ function Homepage(props) {
                             <Typography variant="h3" component="h3">
                                 All Your <span>Health</span> Needs <span>At Once</span>
                             </Typography>
-                            <Button variant="contained" color="secondary">
-                                Get More
+                            <Button variant="contained" color="secondary" component={Link} to="#contact">
+                                Get Started
                             </Button>
                             </div>
                         </Grid>
@@ -161,9 +163,9 @@ function Homepage(props) {
                         </Grid>
                         <Grid item md={6} xs={12}>
                             <img src={doctorBigimage} />
-                            <Button variant="contained" color="secondary" component={Link} to="/Doctor">
+                            <a href="/Doctor" className="buttonPink">
                                 Know More <ArrowRightAltIcon></ArrowRightAltIcon>
-                            </Button>
+                            </a>
                         </Grid>
                     </Grid>
                 </Container>
@@ -181,9 +183,9 @@ function Homepage(props) {
                         </Grid>
                         <Grid item md={6} xs={12}>
                             <img src={patientBigimage} />
-                            <Button variant="contained" color="secondary" component={Link} to="/Patient">
+                            <a href="/Patient" className="buttonPink">
                                 Know More <ArrowRightAltIcon></ArrowRightAltIcon>
-                            </Button>
+                            </a>
                         </Grid>
                         <Grid item md={6} xs={12}>
                             <Grid container spacing={3}>
@@ -352,7 +354,7 @@ function Homepage(props) {
                                 <TextField
                                     id="outlined-search"
                                     label="Enter Your EmailID"
-                                    type="text"
+                                    type="email"
                                     variant="outlined"
                                     fullWidth
                                     className="formControls"

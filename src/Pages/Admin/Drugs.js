@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -30,22 +30,18 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Button from "@material-ui/core/Button";
 import Badge from "@material-ui/core/Badge";
+import axios from "axios";
+import { domainAddress, Context } from "../App/Config";
 
-function createData(ID, CurrentEntry, CorrectedEntry) {
-  return { ID, CurrentEntry, CorrectedEntry };
-}
 
-const rows = [
-  createData(1, "Frozen yoghurt", 159),
-  createData(2, "Ice cream sandwich", 237),
-  createData(3, "Eclair", 262),
-  createData(4, "Cupcake", 305),
-  createData(5, "Gingerbread", 356),
-];
+
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    
   },
   review: {
     // background : 'blue',
@@ -67,10 +63,25 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     width: "100px",
   },
+  leftSpacing : {
+    marginLeft:"10px",
+  }
 }));
 
 function Drugs() {
-  const classes = useStyles();
+
+const classes = useStyles();
+  
+  const [drugsList, setSDrugsList] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${domainAddress}/utils/drugs/list`).then((res) => res.data).then(data => {
+      console.log(data);
+    }).catch(error => console.log(error))
+  },
+  []
+
+  );
 
   return (
 
@@ -78,7 +89,7 @@ function Drugs() {
     // Reviewed
     // On Hold
     <div className={classes.root}>
-      <Grid container spacing={3} j>
+      <Grid container spacing={3} >
         <Grid item md={8} xs={12}>
           <Typography variant="h4" component="h" gutterBottom>
             Drugs
@@ -94,10 +105,27 @@ function Drugs() {
         </Grid>
         <Grid item md={4} xs={12} className={classes.flexend}>
           <FormControl
-            className={classes.root}
+                  className={classes.root}
+                  noValidate
+                  variant="outlined"   
+                >
+              <InputLabel id="demo-simple-select-outlined-label">Select</InputLabel>
+              <Select
+                 labelId="demo-simple-select-outlined-label"
+                 id="demo-simple-select-outlined"
+              >
+                <MenuItem value="NotAvaliable" selected>
+                    Not Avaliable
+                </MenuItem>
+                <MenuItem value="Admin">Reviewed</MenuItem>
+                <MenuItem value="Sadmin">Hold</MenuItem>
+              </Select>
+          </FormControl>
+          <FormControl
+            className={classes.leftSpacing}
             noValidate
             autoComplete="off"
-            fullWidth
+            
           >
             <TextField
               id="outlined-basic"
@@ -123,30 +151,29 @@ function Drugs() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
-                  <TableRow key={row.name}>
-                    <TableCell component="th" scope="row">
-                      {row.ID}
+              {drugsList.map((fieldValue, idx) => (
+                  <TableRow >
+                    <TableCell component="th" >
+                      {idx + 1}
                     </TableCell>
-                    <TableCell>{row.CurrentEntry}</TableCell>
+                    <TableCell>{fieldValue.name}</TableCell>
                     <TableCell>
-                      {/* <Button variant="contained" color="primary">Edit</Button> */}
-
                       <FormControl
                         variant="outlined"
                         className={classes.formControl}
+                        size="small"
                       >
                         <Select>
-                          <MenuItem value="NotAvaliable" size="small">
-                            Not Avaliable
+                          <MenuItem value="NotAvaliable" >
+                            {fieldValue.status}
                           </MenuItem>
-                          <MenuItem value="Admin">Reviewed</MenuItem>
-                          <MenuItem value="Sadmin">Hold</MenuItem>
+                          <MenuItem value="Reviewed">Reviewed</MenuItem>
+                          <MenuItem value="Hold">Hold</MenuItem>
                         </Select>
                       </FormControl>
                     </TableCell>
                     <TableCell>
-                      {" "}
+                     
                       <TextField
                         id="outlined-basic"
                         size="small"
@@ -161,8 +188,7 @@ function Drugs() {
                         className={classes.formControl}
                       >
                         <Select>
-                          <MenuItem value="Yes">Yes</MenuItem>
-                          <MenuItem value="No">No</MenuItem>
+                          <MenuItem value={`fieldValue.name`}>{fieldValue.temporary}</MenuItem>
                         </Select>
                       </FormControl>
                     </TableCell>
@@ -170,8 +196,9 @@ function Drugs() {
                       <Button variant="contained" >Save</Button>
                     </TableCell>
                   </TableRow>
-                ))}
+              ))}
               </TableBody>
+            
             </Table>
           </TableContainer>
         </Grid>

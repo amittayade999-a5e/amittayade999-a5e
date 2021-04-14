@@ -55,11 +55,24 @@ import waitingImage from "../../assets/img/waiting.png";
 import Header from './common/Header';
 import Footer from './common/Footer';
 
+import emailjs from 'emailjs-com';
+import{ init } from 'emailjs-com';
+
 
 function Patient(props) {
 
    
-
+    function sendEmail(e) {
+        e.preventDefault();
+    
+        emailjs.sendForm('service_jlsqboj', 'template_lmop3e5', e.target, 'user_aNf3TpSn1i7EodrhsbKk0')
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+      }
+ 
  
     
     
@@ -80,7 +93,7 @@ function Patient(props) {
                                 All Your <span>CONSULTATION</span> Needs <span>At Once</span>
                             </Typography>
                             <Button variant="contained" color="secondary">
-                                Get More
+                            Get Started
                             </Button>
                             </div>
                         </Grid>
@@ -386,15 +399,16 @@ function Patient(props) {
                             <Grid item md={6} xs={12}>
                                 <Typography varient="h3" component="h3">
                                     Contact Us
-                </Typography>
-
+                                    </Typography>
+                                    <form className="contact-form" onSubmit={sendEmail}>
                                 <TextField
                                     id="outlined-search"
                                     label="Enter Your EmailID"
-                                    type="text"
+                                    type="email"
                                     variant="outlined"
                                     fullWidth
                                     className="formControls"
+                                    Name="from_name"
                                 />
 
                                 <TextField
@@ -407,11 +421,13 @@ function Patient(props) {
                                     label="Enter Your Message"
                                     type="text"
                                     variant="outlined"
+                                    name="message"
                                 />
 
-                                <Button variant="contained" color="secondary">
+                                <Button variant="contained" color="secondary" type="submit">
                                     Submit
                 </Button>
+                </form>
                             </Grid>
                             <Grid item md={6} xs={12} className="leftLine">
                                 <Typography varient="h4" component="h4">

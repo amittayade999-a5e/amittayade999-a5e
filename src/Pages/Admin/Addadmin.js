@@ -26,6 +26,8 @@ import {
     KeyboardTimePicker,
     KeyboardDatePicker,
 } from "@material-ui/pickers";
+import { Context, domainAddress } from "../App/Config";
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -78,7 +80,7 @@ export default function Addadmin(props) {
         lastName: "",
         dob: null,
         number: "",
-        roll: "",
+        role: "",
         emailId: "",
         password: "",
     };
@@ -100,7 +102,7 @@ export default function Addadmin(props) {
                 fieldValues[i].number = e.target.value;
             }
         } else if (inputName.startsWith("role")) {
-            fieldValues[i].gender = e.target.value;
+            fieldValues[i].role = e.target.value;
         } else if (inputName.startsWith("emailId")) {
             fieldValues[i].emailId = e.target.value;
         } else if (inputName.startsWith("password")) {
@@ -127,7 +129,7 @@ export default function Addadmin(props) {
     const handleSubmit = (idx, e, assistantId) => {
         e.preventDefault();
         const requestBody = {
-            clinicDTO: state[idx].clinic.map((elem) => JSON.parse(elem)),
+           
             dob:
                 state[idx].dob &&
                 `${state[idx].dob.getDate() < 10
@@ -138,36 +140,36 @@ export default function Addadmin(props) {
                     : state[idx].dob.getMonth() + 1
                 }-${state[idx].dob.getFullYear()}`,
             emailId: state[idx].emailId,
-            functionalityMasterDTO: state[idx].functionality.map((elem) =>
-                JSON.parse(elem)
-            ),
-            gender: state[idx].gender,
-            name: `${state[idx].firstName} ${state[idx].middleName} ${state[idx].lastName}`,
+            roleId : state[idx].role,
+            password : state[idx].password,
+            firstName : state[idx].firstName,
+            middleName :state[idx].middleName,
+            lastName : state[idx].lastName,
             number: state[idx].number,
             ...(assistantId === -1 && { password: state[idx].password }),
         };
-        // axios
-        //   .post(
-        //     `${domainAddress}/clinic-detail/assistant/save/${context.doctorId}`,
-        //     requestBody
-        //   )
-        //   .then((res) => {
-        //     props.history.go(0);
-        //   })
-        //   .catch((error) => {
-        //     console.log(error);
-        //     const fieldValues = [...state];
-        //     if (error.message.includes("400")) {
-        //       fieldValues[idx].errorMessage =
-        //         "User already exists with same email / mobile number";
-        //     } else if (error.message.includes("500")) {
-        //       fieldValues[idx].errorMessage =
-        //         "An error occurred. Please try after sometime";
-        //     } else {
-        //       fieldValues[idx].errorMessage = error.message;
-        //     }
-        //     setState(fieldValues);
-        //   });
+        axios
+          .post(
+            `${domainAddress}/user/register`,
+            requestBody
+          )
+          .then((res) => {
+            props.history.go(0);
+          })
+          .catch((error) => {
+            console.log(error);
+            const fieldValues = [...state];
+            if (error.message.includes("400")) {
+              fieldValues[idx].errorMessage =
+                "User already exists with same email / mobile number";
+            } else if (error.message.includes("500")) {
+              fieldValues[idx].errorMessage =
+                "An error occurred. Please try after sometime";
+            } else {
+              fieldValues[idx].errorMessage = error.message;
+            }
+            setState(fieldValues);
+          });
     };
 
     //handling assistant delete
@@ -342,12 +344,12 @@ export default function Addadmin(props) {
                                         <Select
                                             labelId="demo-simple-select-outlined-label"
                                             id="demo-simple-select-outlined"
-                                            onChange={handleChange}
+                                            onChange={(e) => handleChange(idx, e)}
                                             label="Role"
                                             name={`role${idx}`}
                                         >
-                                            <MenuItem value="Admin">Admin</MenuItem>
-                                            <MenuItem value="Sadmin">Super Admin</MenuItem>
+                                            <MenuItem value="4">Admin</MenuItem>
+                                            <MenuItem value="5">Super Admin</MenuItem>
                                         </Select>
                                     </FormControl>
                                 </Grid>
@@ -356,6 +358,7 @@ export default function Addadmin(props) {
                                         className={classes.formControl}
                                         id="Phone"
                                         label="Phone No"
+                                         onChange={(e) => handleChange(idx, e)}
                                         variant="outlined"
                                         name={`number${idx}`}
                                     />
@@ -364,6 +367,7 @@ export default function Addadmin(props) {
                                     <TextField
                                         className={classes.formControl}
                                         id="Email"
+                                        onChange={(e) => handleChange(idx, e)}
                                         label="Email"
                                         variant="outlined"
                                         name={`emailId${idx}`}
