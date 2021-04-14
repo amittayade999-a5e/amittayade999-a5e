@@ -34,10 +34,6 @@ import "../../../assets/css/main.css";
 import logo from "../../../assets/img/logo.png";
 
 function Header(props) {
-    
-    
-    
-
 
     const useStyles = makeStyles((theme) => ({
         navBar: {
@@ -62,7 +58,7 @@ function Header(props) {
                                 <Button variant="contained" color="secondary" size="small" className="menuToggle">
                                     <MenuIcon/>
                                 </Button>
-                                <ul className="listInline" className={this.props.showHideSidenav}>
+                                <ul className="listInline">
                                     <li>
                                         <a href="" className="btn">
                                             Home
@@ -106,7 +102,5 @@ function Header(props) {
         </div>
     );
 }
-
-
 
 export default Header;
